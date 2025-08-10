@@ -1,112 +1,810 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Köszönő oldal — példa</title>
-  <style>
-    :root{--bg:#f7fafc;--card:#ffffff;--accent:#2563eb;--text:#0f172a}
-    [data-theme="dark"]{--bg:#0b1220;--card:#0f172a;--accent:#60a5fa;--text:#e6eef8}
-    *{box-sizing:border-box}
-    body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;background:linear-gradient(135deg,var(--bg),#e6eef8)}
-    .card{width:min(720px,96%);background:var(--card);color:var(--text);padding:24px;border-radius:16px;box-shadow:0 8px 30px rgba(2,6,23,0.08)}
-    h1{margin:0 0 8px;font-size:1.25rem}
-    p.lead{margin:0 0 18px;color:rgba(15,23,42,0.7)}
-    .row{display:flex;gap:12px}
-    input[type=text]{flex:1;padding:10px 12px;border:1px solid #e6eef8;border-radius:10px;font-size:1rem}
-    button{background:var(--accent);color:white;border:none;padding:10px 14px;border-radius:10px;cursor:pointer}
-    .controls{display:flex;gap:8px;align-items:center;margin-top:12px}
-    .result{margin-top:18px;padding:12px;border-radius:10px;background:linear-gradient(180deg,rgba(2,6,23,0.02),transparent)}
-    small{color:rgba(15,23,42,0.55)}
-    .muted{color:rgba(15,23,42,0.45)}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dandelion Vendégház – 4 évszakos, kandallós, dézsás pihenés a Balaton-felvidéken</title>
+    <meta name="description" content="Romantikus és családbarát vendégház Tapolca közelében. Kandalló, melegvizes dézsa, e-bike bérlés, csillagnézés. Foglalj közvetlenül – legjobb feltételekkel!">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dandelionhouse.hu/">
+    <meta property="og:title" content="Dandelion Vendégház – 4 évszakos, kandallós, dézsás pihenés a Balaton-felvidéken">
+    <meta property="og:description" content="Romantikus és családbarát vendégház Tapolca közelében. Kandalló, melegvizes dézsa, e-bike bérlés, csillagnézés. Foglalj közvetlenül – legjobb feltételekkel!">
+    <meta property="og:image" content="/assets/images/hero-dandelion.jpg">
+    <meta property="og:locale" content="hu_HU">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://dandelionhouse.hu/">
+    <meta property="twitter:title" content="Dandelion Vendégház – 4 évszakos, kandallós, dézsás pihenés a Balaton-felvidéken">
+    <meta property="twitter:description" content="Romantikus és családbarát vendégház Tapolca közelében. Kandalló, melegvizes dézsa, e-bike bérlés, csillagnézés. Foglalj közvetlenül – legjobb feltételekkel!">
+    <meta property="twitter:image" content="/assets/images/hero-dandelion.jpg">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/assets/images/hero-dandelion.jpg" as="image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'beige': {
+                            50: '#fefdf8',
+                            100: '#fdf9f0',
+                            200: '#f9f1e1',
+                            300: '#f5e6c8',
+                            400: '#edd5a3',
+                            500: '#e4c474',
+                            600: '#d4a853',
+                            700: '#b08943',
+                            800: '#8f6f39',
+                            900: '#735b31'
+                        },
+                        'olive': {
+                            50: '#f7f8f3',
+                            100: '#eef1e6',
+                            200: '#dde3cd',
+                            300: '#c5cfaa',
+                            400: '#abb784',
+                            500: '#929d64',
+                            600: '#7a834e',
+                            700: '#5f6640',
+                            800: '#4e5436',
+                            900: '#42472f'
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LodgingBusiness",
+        "name": "Dandelion Vendégház",
+        "description": "Romantikus és családbarát vendégház a Balaton-felvidéken, kandallóval, melegvizes dézsával és e-bike bérlési lehetőséggel.",
+        "url": "https://dandelionhouse.hu",
+        "telephone": "+36-30-123-4567",
+        "email": "info@dandelionhouse.hu",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Példa utca 123",
+            "addressLocality": "Káptalantóti",
+            "postalCode": "8295",
+            "addressCountry": "HU"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "46.9167",
+            "longitude": "17.5833"
+        },
+        "amenityFeature": [
+            {"@type": "LocationFeatureSpecification", "name": "Kandalló"},
+            {"@type": "LocationFeatureSpecification", "name": "Melegvizes dézsa"},
+            {"@type": "LocationFeatureSpecification", "name": "E-bike bérlés"},
+            {"@type": "LocationFeatureSpecification", "name": "Ingyenes parkolás"},
+            {"@type": "LocationFeatureSpecification", "name": "WiFi"},
+            {"@type": "LocationFeatureSpecification", "name": "Légkondicionálás"}
+        ],
+        "priceRange": "$$",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "42"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Milyen felszereltséggel rendelkezik a vendégház?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A vendégház teljes felszereltséggel rendelkezik: kandalló, melegvizes dézsa, légkondicionálás, teljes konyha, ingyenes WiFi és parkolóhely."
+                }
+            },
+            {
+                "@type": "Question", 
+                "name": "Elérhető e-bike bérlés?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Igen, e-bike és hagyományos kerékpár bérlési lehetőséget is biztosítunk vendégeink számára a környék felfedezéséhez."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Mikor a legjobb időszak a látogatásra?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A vendégház négy évszakban fogad vendégeket. Tavasszal és nyáron a túrázás és kerékpározás, ősszel a szüret és színes lombok, télen a kandallózás és dézsázás a fő attrakciók."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Milyen messze van Tapolca és a Balaton?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Tapolca 15 perc autóútra, a Balaton pedig körülbelül 20-25 perc alatt elérhető a vendégházból."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Custom styles -->
+    <style>
+        /* Critical CSS */
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/assets/images/hero-dandelion.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .floating-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .floating-cta.show {
+            transform: translateY(0);
+        }
+        
+        @media (min-width: 768px) {
+            .floating-cta {
+                display: none;
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
-<body>
-  <main class="card" id="app">
-    <h1>Köszönő oldal — HTML példa</h1>
-    <p class="lead">Írd be a neved, majd kattints a <strong>Köszön</strong>-re. A gomb személyre szabott üzenetet ad vissza, valamint véletlenszerű bókokat adhat.</p>
 
-    <div class="row">
-      <input id="nameInput" type="text" placeholder="Add meg a neved (pl. Anna)" aria-label="Név megadása">
-      <button id="greetBtn">Köszön</button>
+<body class="font-sans bg-beige-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-xl font-bold text-olive-700">Dandelion Vendégház</h1>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#kezdolap" class="text-gray-700 hover:text-olive-600 px-3 py-2 text-sm font-medium transition">Kezdőlap</a>
+                        <a href="#vendeghaz" class="text-gray-700 hover:text-olive-600 px-3 py-2 text-sm font-medium transition">Vendégház</a>
+                        <a href="#elmenyek" class="text-gray-700 hover:text-olive-600 px-3 py-2 text-sm font-medium transition">Élmények</a>
+                        <a href="#galeria" class="text-gray-700 hover:text-olive-600 px-3 py-2 text-sm font-medium transition">Galéria</a>
+                        <a href="#kapcsolat" class="text-gray-700 hover:text-olive-600 px-3 py-2 text-sm font-medium transition">Kapcsolat</a>
+                        <a href="#foglalas" class="bg-olive-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-olive-700 transition">Foglalás</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-olive-600">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#kezdolap" class="block px-3 py-2 text-gray-700 hover:text-olive-600">Kezdőlap</a>
+                <a href="#vendeghaz" class="block px-3 py-2 text-gray-700 hover:text-olive-600">Vendégház</a>
+                <a href="#elmenyek" class="block px-3 py-2 text-gray-700 hover:text-olive-600">Élmények</a>
+                <a href="#galeria" class="block px-3 py-2 text-gray-700 hover:text-olive-600">Galéria</a>
+                <a href="#kapcsolat" class="block px-3 py-2 text-gray-700 hover:text-olive-600">Kapcsolat</a>
+                <a href="#foglalas" class="block px-3 py-2 bg-olive-600 text-white rounded-lg mx-3 text-center">Foglalás</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="kezdolap" class="hero-bg min-h-screen flex items-center justify-center relative">
+        <div class="text-center text-white max-w-4xl mx-auto px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                Kikapcsolódás négy évszakon át
+                <span class="block text-beige-200">kandallóval és melegvizes dézsával</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 text-beige-100 leading-relaxed">
+                Romantikus és családbarát vendégház a Balaton-felvidék szívében, 
+                ahol minden évszak varázslatos élményeket kínál
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#foglalas" class="bg-olive-600 hover:bg-olive-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition transform hover:scale-105">
+                    Foglalj most
+                </a>
+                <a href="#vendeghaz" class="bg-white/20 hover:bg-white/30 text-white border-2 border-white px-8 py-4 rounded-lg text-lg font-semibold transition backdrop-blur-sm">
+                    Tudj meg többet
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Miért válaszd a Dandelion Vendégházat?
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Egyedi élmények és prémium komfort a Balaton-felvidék legszebb részén
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center fade-in">
+                    <div class="bg-olive-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-olive-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Kandallós melegség</h3>
+                    <p class="text-gray-600">Romantikus hangulat és otthonos melegség minden évszakban</p>
+                </div>
+                
+                <div class="text-center fade-in">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Melegvizes dézsa</h3>
+                    <p class="text-gray-600">Relaxálás a csillagos ég alatt, bármikor az évben</p>
+                </div>
+                
+                <div class="text-center fade-in">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">E-bike bérlés</h3>
+                    <p class="text-gray-600">Fedezd fel könnyedén a Balaton-felvidék csodálatos táját</p>
+                </div>
+                
+                <div class="text-center fade-in">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Csillagnézés</h3>
+                    <p class="text-gray-600">Kristálytiszta égbolt és felejthetetlen éjszakai élmények</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="vendeghaz" class="py-20 bg-beige-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                        A tökéletes menekülés a hétköznapokból
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        A Dandelion Vendégház egy különleges hely, ahol a természet szépsége találkozik 
+                        a modern komforttal. Tapolca közelében, a Balaton-felvidék szívében található 
+                        otthonunk tökéletes választás pároknak és családoknak egyaránt.
+                    </p>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 text-olive-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">Teljes felszereltség és modern konyha</span>
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 text-olive-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">Légkondicionálás és központi fűtés</span>
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 text-olive-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">Ingyenes WiFi és parkolóhely</span>
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 text-olive-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">Kerékpár és e-bike bérlési lehetőség</span>
+                        </div>
+                    </div>
+                    <a href="#foglalas" class="bg-olive-600 hover:bg-olive-700 text-white px-6 py-3 rounded-lg font-semibold transition inline-block">
+                        Kérj ajánlatot
+                    </a>
+                </div>
+                <div class="fade-in">
+                    <img src="/assets/images/vendeghaz-exterior.jpg" alt="Dandelion Vendégház külső" class="rounded-lg shadow-lg w-full h-auto" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiences Section -->
+    <section id="elmenyek" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Felejthetetlen élmények négy évszakban
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    A Balaton-felvidék minden évszakban más-más csodákat tartogat
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-gradient-to-br from-green-100 to-green-200 rounded-lg p-6 fade-in">
+                    <h3 class="text-xl font-semibold text-green-800 mb-3">🌸 Tavasz</h3>
+                    <ul class="text-green-700 space-y-2">
+                        <li>• Vadvirágos rétek túrái</li>
+                        <li>• Kerékpározás a tanúhegyeken</li>
+                        <li>• Pincejárás Badacsonyban</li>
+                        <li>• Dézsázás a langy estéken</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-lg p-6 fade-in">
+                    <h3 class="text-xl font-semibold text-yellow-800 mb-3">☀️ Nyár</h3>
+                    <ul class="text-yellow-700 space-y-2">
+                        <li>• Balatoni strandolás</li>
+                        <li>• E-bike túrák a környéken</li>
+                        <li>• Csillagnézés a dézsában</li>
+                        <li>• Tapolcai tavasbarlang</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg p-6 fade-in">
+                    <h3 class="text-xl font-semibold text-orange-800 mb-3">🍂 Ősz</h3>
+                    <ul class="text-orange-700 space-y-2">
+                        <li>• Szüreti fesztiválok</li>
+                        <li>• Gesztenyegyűjtés az erdőben</li>
+                        <li>• Kandallózás melegen</li>
+                        <li>• Borpincék látogatása</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg p-6 fade-in">
+                    <h3 class="text-xl font-semibold text-blue-800 mb-3">❄️ Tél</h3>
+                    <ul class="text-blue-700 space-y-2">
+                        <li>• Meleg dézsa a hóban</li>
+                        <li>• Romantikus kandallózás</li>
+                        <li>• Téli túrák a tanúhegyeken</li>
+                        <li>• Karácsonyi hangulat</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="galeria" class="py-20 bg-beige-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Galéria</h2>
+                <p class="text-xl text-gray-600">Pillants be a Dandelion Vendégház világába</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="fade-in">
+                    <img src="/assets/images/gallery-1.jpg" alt="Kandallós nappali" class="w-full h-64 object-cover rounded-lg shadow-lg hover:shadow-xl transition" loading="lazy">
+                </div>
+                <div class="fade-in">
+                    <img src="/assets/images/gallery-2.jpg" alt="Melegvizes dézsa" class="w-full h-64 object-cover rounded-lg shadow-lg hover:shadow-xl transition" loading="lazy">
+                </div>
+                <div class="fade-in">
+                    <img src="/assets/images/gallery-3.jpg" alt="Hálószoba" class="w-full h-64 object-cover rounded-lg shadow-lg hover:shadow-xl transition" loading="lazy">
+                </div>
+                <div class="fade-in">
+                    <img src="/assets/images/gallery-4.jpg" alt="Konyha" class="w-full h-64 object-cover rounded-lg shadow-lg hover:shadow-xl transition" loading="lazy">
+                </div>
+                <div class="fade-in">
+                    <img src="/assets/images/gallery-5.jpg" alt="Terasz" class="w-full h-64 object-cover rounded-lg shadow-lg hover:shadow-xl transition" loading="lazy">
+                </div>
+                <div class="fade-in">
+                    <img src="/assets/images/gallery-6.jpg" alt="Környék" class="w-full h-64 object-cover rounded-lg shadow-lg hover:shadow-xl transition" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Mit mondanak vendégeink?</h2>
+                <p class="text-xl text-gray-600">Több mint 100 elégedett vendég értékelése</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 rounded-lg p-6 fade-in">
+                    <div class="flex text-yellow-400 mb-4">
+                        <span>⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="text-gray-600 mb-4 italic">"Csodálatos hétvégét töltöttünk el! A dézsa és a kandalló tökéletes kombinációja. Mindenképpen visszajövünk!"</p>
+                    <div class="text-sm text-gray-500">- Mária és Péter, Budapest</div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-6 fade-in">
+                    <div class="flex text-yellow-400 mb-4">
+                        <span>⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="text-gray-600 mb-4 italic">"A gyerekek imádták az e-bike túrákat, mi pedig a romantikus estéket a dézsában. Tökéletes családi program!"</p>
+                    <div class="text-sm text-gray-500">- Kovács család, Debrecen</div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-6 fade-in">
+                    <div class="flex text-yellow-400 mb-4">
+                        <span>⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="text-gray-600 mb-4 italic">"Minden igényünket kielégítette a vendégház. A környék gyönyörű, a felszereltség tökéletes. Csak ajánlani tudom!"</p>
+                    <div class="text-sm text-gray-500">- Anna és Gábor, Szeged</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="foglalas" class="py-20 bg-olive-600 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Foglalj most előnyösen!</h2>
+                <p class="text-xl mb-8 text-olive-100">
+                    Közvetlen foglalással a legjobb árakhoz jutsz hozzá. Nincs közvetítői jutalék!
+                </p>
+                
+                <div class="bg-white rounded-lg p-8 text-gray-800 max-w-md mx-auto">
+                    <h3 class="text-xl font-semibold mb-6">Kérj ajánlatot</h3>
+                    <form class="space-y-4" action="#" method="POST">
+                        <div>
+                            <input type="text" name="name" placeholder="Neved" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-olive-500 focus:border-olive-500">
+                        </div>
+                        <div>
+                            <input type="email" name="email" placeholder="E-mail címed" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-olive-500 focus:border-olive-500">
+                        </div>
+                        <div>
+                            <input type="tel" name="phone" placeholder="Telefonszámod" 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-olive-500 focus:border-olive-500">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <input type="date" name="checkin" placeholder="Érkezés" required 
+                                   class="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-olive-500 focus:border-olive-500">
+                            <input type="date" name="checkout" placeholder="Távozás" required 
+                                   class="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-olive-500 focus:border-olive-500">
+                        </div>
+                        <div>
+                            <select name="guests" required 
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-olive-500 focus:border-olive-500">
+                                <option value="">Vendégek száma</option>
+                                <option value="2">2 fő</option>
+                                <option value="4">4 fő</option>
+                                <option value="6">6 fő</option>
+                            </select>
+                        </div>
+                        <div>
+                            <textarea name="message" rows="3" placeholder="Üzenet, különleges kérések" 
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-olive-500 focus:border-olive-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-olive-600 hover:bg-olive-700 text-white py-3 rounded-lg font-semibold transition">
+                            Ajánlatkérés küldése
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="mt-8 text-olive-100">
+                    <p class="mb-4">Vagy hívj fel közvetlenül:</p>
+                    <a href="tel:+36301234567" class="text-2xl font-semibold hover:text-white transition">
+                        +36 30 123 4567
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-beige-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="fade-in">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                    Iratkozz fel hírlevelünkre!
+                </h2>
+                <p class="text-lg text-gray-600 mb-8">
+                    Értesülj elsőként akciókról, szezonális tippekről és újdonságokról.
+                </p>
+                
+                <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto" action="#" method="POST">
+                    <input type="email" name="newsletter_email" placeholder="E-mail címed" required 
+                           class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-olive-500 focus:border-olive-500">
+                    <button type="submit" class="bg-olive-600 hover:bg-olive-700 text-white px-6 py-3 rounded-lg font-semibold transition">
+                        Feliratkozom
+                    </button>
+                </form>
+                
+                <p class="text-xs text-gray-500 mt-4">
+                    <label class="flex items-center justify-center">
+                        <input type="checkbox" name="newsletter_consent" required class="mr-2">
+                        Hozzájárulok a hírlevelek fogadásához. Bármikor leiratkozhatok.
+                    </label>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kapcsolat" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="fade-in">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Kapcsolat és megközelítés</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <svg class="w-6 h-6 text-olive-600 mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <div>
+                                <h3 class="font-semibold text-gray-900">Cím</h3>
+                                <p class="text-gray-600">8295 Káptalantóti, Példa utca 123</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <svg class="w-6 h-6 text-olive-600 mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                            <div>
+                                <h3 class="font-semibold text-gray-900">Telefon</h3>
+                                <a href="tel:+36301234567" class="text-olive-600 hover:text-olive-700">+36 30 123 4567</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <svg class="w-6 h-6 text-olive-600 mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <div>
+                                <h3 class="font-semibold text-gray-900">E-mail</h3>
+                                <a href="mailto:info@dandelionhouse.hu" class="text-olive-600 hover:text-olive-700">info@dandelionhouse.hu</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h3 class="font-semibold text-gray-900 mb-4">Megközelítés</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Budapestről az M7-es autópályán körülbelül 1,5 óra alatt elérhető. 
+                            Tapolca 15 perc, a Balaton partja 20-25 perc autóútra található.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <div class="bg-gray-200 rounded-lg h-96 flex items-center justify-center">
+                        <p class="text-gray-500">Térkép helye (Google Maps beágyazás)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Floating CTA -->
+    <div id="floating-cta" class="floating-cta bg-olive-600 text-white p-4 shadow-lg">
+        <div class="flex items-center justify-between">
+            <div>
+                <p class="font-semibold">Foglalj most!</p>
+                <p class="text-xs text-olive-100">Legjobb árak közvetlenül</p>
+            </div>
+            <a href="#foglalas" class="bg-white text-olive-600 px-4 py-2 rounded-lg font-semibold">
+                Foglalás
+            </a>
+        </div>
     </div>
 
-    <div class="controls">
-      <label><input id="complimentToggle" type="checkbox"> Véletlenszerű bók</label>
-      <button id="copyBtn" style="background:#10b981">Másolás</button>
-      <button id="themeBtn" style="background:transparent;color:var(--accent);border:1px solid rgba(37,99,235,0.12)">Sötét mód</button>
-    </div>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Dandelion Vendégház</h3>
+                    <p class="text-gray-300 mb-4">
+                        Romantikus és családbarát vendégház a Balaton-felvidék szívében.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white">Facebook</a>
+                        <a href="#" class="text-gray-300 hover:text-white">Instagram</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Navigáció</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#kezdolap" class="hover:text-white">Kezdőlap</a></li>
+                        <li><a href="#vendeghaz" class="hover:text-white">Vendégház</a></li>
+                        <li><a href="#elmenyek" class="hover:text-white">Élmények</a></li>
+                        <li><a href="#galeria" class="hover:text-white">Galéria</a></li>
+                        <li><a href="#kapcsolat" class="hover:text-white">Kapcsolat</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Szolgáltatások</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>Kandallós vendégház</li>
+                        <li>Melegvizes dézsa</li>
+                        <li>E-bike bérlés</li>
+                        <li>Csillagnézés</li>
+                        <li>4 évszakos komfort</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Kapcsolat</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>+36 30 123 4567</li>
+                        <li>info@dandelionhouse.hu</li>
+                        <li>8295 Káptalantóti</li>
+                        <li>Példa utca 123</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 Dandelion Vendégház. Minden jog fenntartva.</p>
+                <p class="mt-2">
+                    <a href="/adatvedelem.html" class="hover:text-white">Adatvédelmi tájékoztató</a> | 
+                    <a href="/aszf.html" class="hover:text-white ml-2">ÁSZF</a>
+                </p>
+            </div>
+        </div>
+    </footer>
 
-    <div id="result" class="result" aria-live="polite"> <small class="muted">Itt jelenik meg az üzenet.</small></div>
-  </main>
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
 
-  <script>
-    // Egyszerű, jól kommentált JavaScript
-    const nameInput = document.getElementById('nameInput');
-    const greetBtn = document.getElementById('greetBtn');
-    const result = document.getElementById('result');
-    const complimentToggle = document.getElementById('complimentToggle');
-    const copyBtn = document.getElementById('copyBtn');
-    const themeBtn = document.getElementById('themeBtn');
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
 
-    const compliments = [
-      'nagyon kreatív vagy',
-      'szívből kedves vagy másokhoz',
-      'szuper problémamegoldó képességed van',
-      'mosolyod fertőző',
-      'példaértékű kitartásod van'
-    ];
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-    function randomFrom(arr){
-      return arr[Math.floor(Math.random()*arr.length)];
-    }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
 
-    function greet(){
-      const name = nameInput.value.trim() || 'Barátom';
-      const now = new Date();
-      const hours = now.getHours();
-      let part = 'szép napot';
-      if(hours < 12) part = 'jó reggelt';
-      else if(hours >= 18) part = 'jó estét';
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
 
-      let message = `Szia, ${name}! ${part}.`;
-      if(complimentToggle.checked){
-        message += ` Egy megjegyzés: ${randomFrom(compliments)}.`;
-      }
+        // Floating CTA for mobile
+        const floatingCta = document.getElementById('floating-cta');
+        let lastScrollY = window.scrollY;
+        let ticking = false;
 
-      // Biztonságos megjelenítés (egyszerű escaping)
-      result.textContent = message;
-    }
+        function updateFloatingCta() {
+            const currentScrollY = window.scrollY;
+            
+            if (currentScrollY > 500 && window.innerWidth < 768) {
+                floatingCta.classList.add('show');
+            } else {
+                floatingCta.classList.remove('show');
+            }
+            
+            lastScrollY = currentScrollY;
+            ticking = false;
+        }
 
-    greetBtn.addEventListener('click', greet);
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateFloatingCta);
+                ticking = true;
+            }
+        }
 
-    // Enter lenyomásra is küldjük
-    nameInput.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') greet(); });
+        window.addEventListener('scroll', requestTick);
+        window.addEventListener('resize', requestTick);
 
-    // Másolás a vágólapra
-    copyBtn.addEventListener('click', async ()=>{
-      const text = result.textContent.trim();
-      if(!text){ alert('Nincs mit másolni.'); return; }
-      try{
-        await navigator.clipboard.writeText(text);
-        copyBtn.textContent = 'Másolva!';
-        setTimeout(()=> copyBtn.textContent = 'Másolás', 1200);
-      }catch(err){
-        alert('Nem sikerült másolni.');
-      }
-    });
+        // Form submission handling
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Here you would normally send the form data to your server
+                alert('Köszönjük az érdeklődést! Hamarosan felvesszük Önnel a kapcsolatot.');
+            });
+        });
 
-    // Sötét / világos téma váltás
-    const root = document.documentElement;
-    let dark = false;
-    themeBtn.addEventListener('click', ()=>{
-      dark = !dark;
-      if(dark){ root.setAttribute('data-theme','dark'); themeBtn.textContent = 'Világos mód'; }
-      else { root.removeAttribute('data-theme'); themeBtn.textContent = 'Sötét mód'; }
-    });
+        // Set minimum date for booking form
+        const today = new Date().toISOString().split('T')[0];
+        document.querySelectorAll('input[type="date"]').forEach(input => {
+            input.setAttribute('min', today);
+        });
+    </script>
 
-    // Kis UX: ha a név mező üres, fókuszálunk rá
-    window.addEventListener('load', ()=> nameInput.focus());
-  </script>
+    <!-- Analytics placeholder -->
+    <!-- 
+    Google Analytics or Plausible script would go here
+    Example for Plausible:
+    <script defer data-domain="dandelionhouse.hu" src="https://plausible.io/js/script.js"></script>
+    -->
 </body>
 </html>
