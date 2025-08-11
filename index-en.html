@@ -1,0 +1,1156 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dandelion Guesthouse - Modern Accommodation</title>
+    <meta name="description" content="Discover Dandelion Guesthouse - modern, comfortable accommodation with excellent services.">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #f59e0b;
+            --primary-dark: #d97706;
+            --secondary: #3b82f6;
+            --secondary-dark: #2563eb;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --white: #ffffff;
+            --green-600: #16a34a;
+            --green-100: #dcfce7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--gray-900);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--gray-700);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 100%),
+                        url('badacsony.jpg') center/cover;
+            color: var(--white);
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            opacity: 0.8;
+        }
+
+        .hero-feature i {
+            color: var(--secondary);
+            margin-right: 0.5rem;
+        }
+
+        /* Section */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .bg-gray {
+            background: var(--gray-50);
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Cards */
+        .card {
+            background: var(--white);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: var(--gray-600);
+            margin-bottom: 1rem;
+        }
+
+        .badges {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .badge-primary {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary);
+        }
+
+        .badge-secondary {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--secondary);
+        }
+
+        .badge-green {
+            background: var(--green-100);
+            color: var(--green-600);
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .price-unit {
+            font-size: 0.875rem;
+            font-weight: 400;
+            color: var(--gray-600);
+        }
+
+        /* Service Cards */
+        .service-card {
+            text-align: center;
+            padding: 2rem 1rem;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: scale(1.05);
+        }
+
+        .service-icon {
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+        }
+
+        .icon-wifi {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+        }
+
+        .icon-parking {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+        }
+
+        .icon-ac {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+        }
+
+        .icon-kitchen {
+            background: rgba(139, 92, 246, 0.2);
+            color: #8b5cf6;
+        }
+
+        .icon-primary {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary);
+        }
+
+        .icon-secondary {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--secondary);
+        }
+
+        .icon-green {
+            background: var(--green-100);
+            color: var(--green-600);
+        }
+
+        /* Contact Form */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--gray-700);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--gray-300);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gray-900);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer ul {
+            list-style: none;
+        }
+
+        .footer ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: transparent;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+            color: #fbbf24;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--gray-800);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--gray-400);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-features {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Top Contact Bar */
+        .top-contact-bar {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.3rem 0;
+            font-size: 0.8rem;
+            position: relative;
+        }
+
+        .top-contact-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item i {
+            color: var(--white);
+        }
+
+        .contact-item a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: var(--gray-200);
+        }
+
+        .close-bar {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .close-bar:hover {
+            color: var(--gray-200);
+        }
+
+        /* Dark Mode */
+        .dark-mode-toggle {
+            margin-right: 1rem;
+        }
+
+        .toggle-btn {
+            background: var(--gray-200);
+            border: none;
+            border-radius: 1rem;
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.875rem;
+        }
+
+        .toggle-btn:hover {
+            background: var(--gray-300);
+        }
+
+        body.dark-mode {
+            --white: #1f2937;
+            --gray-50: #111827;
+            --gray-100: #1f2937;
+            --gray-200: #374151;
+            --gray-300: #4b5563;
+            --gray-600: #d1d5db;
+            --gray-700: #f3f4f6;
+            --gray-800: #f9fafb;
+            --gray-900: #ffffff;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: relative;
+            margin-right: 1rem;
+        }
+
+        .language-btn {
+            background: var(--gray-200);
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.875rem;
+        }
+
+        .language-btn:hover {
+            background: var(--gray-300);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: none;
+            z-index: 1000;
+        }
+
+        .language-dropdown.show {
+            display: block;
+        }
+
+        .language-option {
+            display: block;
+            width: 100%;
+            padding: 0.5rem 1rem;
+            border: none;
+            background: none;
+            text-align: left;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .language-option:hover {
+            background: var(--gray-100);
+        }
+
+        @media (max-width: 768px) {
+            .top-contact-content {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .nav-controls {
+                display: flex;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Contact Bar -->
+    <div class="top-contact-bar" id="top-contact-bar">
+        <div class="container">
+            <div class="top-contact-content">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+36207730807">+36 20 773 0807</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:info@dandelionhouse.hu">info@dandelionhouse.hu</a>
+                </div>
+            </div>
+            <button class="close-bar" onclick="closeTopBar()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <a href="#home" class="logo">
+                    <i class="fas fa-seedling"></i>
+                    Dandelion Guesthouse
+                </a>
+
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#rooms">Rooms</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+
+                <div class="nav-controls">
+                    <div class="language-switcher">
+                        <button class="language-btn" onclick="toggleLanguageDropdown()">
+                            <i class="fas fa-globe"></i>
+                            <span id="current-lang">EN</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="language-dropdown" id="language-dropdown">
+                            <button class="language-option" onclick="switchLanguage('hu')">🇭🇺 Magyar</button>
+                            <button class="language-option" onclick="switchLanguage('en')">🇬🇧 English</button>
+                            <button class="language-option" onclick="switchLanguage('de')">🇩🇪 Deutsch</button>
+                        </div>
+                    </div>
+                    
+                    <div class="dark-mode-toggle">
+                        <button class="toggle-btn" onclick="toggleDarkMode()">
+                            <i class="fas fa-moon" id="mode-icon"></i>
+                        </button>
+                    </div>
+                    
+                    <a href="#contact" class="btn btn-primary">Book Now</a>
+                    <button class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content animate-fade-in">
+            <h1>Welcome to <span style="color: var(--primary)">Dandelion</span> Guesthouse</h1>
+            <p>Discover the perfect harmony between modern comfort and homely atmosphere. Enjoy memorable moments at our guesthouse.</p>
+
+            <div class="hero-buttons">
+                <a href="#rooms" class="btn btn-primary">
+                    <i class="fas fa-eye"></i> View Rooms
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-phone"></i> Contact
+                </a>
+            </div>
+
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <i class="fas fa-star"></i>
+                    <span>4.8/5 rating</span>
+                </div>
+                <div class="hero-feature">
+                    <i class="fas fa-wifi"></i>
+                    <span>Free WiFi</span>
+                </div>
+                <div class="hero-feature">
+                    <i class="fas fa-car"></i>
+                    <span>Free parking</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="rooms" class="section bg-gray">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Rooms and Apartments</h2>
+                <p>Each room is a meeting point of unique atmosphere and modern comfort. Choose the accommodation that suits you best.</p>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="card">
+                    <img src="d1_main.png" alt="D1 Guesthouse" class="card-image">
+                    <div class="card-content">
+                        <h3>D1 Guesthouse</h3>
+                        <p>Spacious, modern house for families or groups, with panoramic terrace and fully equipped kitchen.</p>
+                        <div class="badges">
+                            <span class="badge badge-primary">For families</span>
+                            <span class="badge badge-secondary">Panoramic terrace</span>
+                            <span class="badge badge-green">Equipped kitchen</span>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary" onclick="selectRoom('D1 Guesthouse')">Choose</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="d2_main.png" alt="D2 Guesthouse" class="card-image">
+                    <div class="card-content">
+                        <h3>D2 Guesthouse</h3>
+                        <p>Cozy gallery house for couples or small families, with hot tub and quiet, nature-close environment.</p>
+                        <div class="badges">
+                            <span class="badge badge-primary">For couples</span>
+                            <span class="badge badge-secondary">Gallery</span>
+                            <span class="badge badge-green">Hot tub</span>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary" onclick="selectRoom('D2 Guesthouse')">Choose</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="fuge_main.png" alt="Fig House" class="card-image">
+                    <div class="card-content">
+                        <h3>Fig House</h3>
+                        <p>Intimate two-story house with private hot tub, romantic panorama and fireplace living room, ideal for couples or small families.</p>
+                        <div class="badges">
+                            <span class="badge badge-primary">Two-story</span>
+                            <span class="badge badge-secondary">Fireplace</span>
+                            <span class="badge badge-green">Private hot tub</span>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary" onclick="selectRoom('Fig House')">Choose</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services and Amenities</h2>
+                <p>Everything you need for a perfect stay. Fully equipped accommodation with modern comfort.</p>
+            </div>
+
+            <!-- Main Services Grid -->
+            <div class="grid grid-4" style="margin-bottom: 4rem;">
+                <div class="service-card">
+                    <div class="service-icon icon-wifi">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3>Free WiFi</h3>
+                    <p>High-speed internet throughout the building</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon icon-parking">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>Free Parking</h3>
+                    <p>Private parking space on site</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon icon-ac">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                    <h3>Air Conditioning</h3>
+                    <p>Comfort climate in every room</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon icon-kitchen">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Full Kitchen</h3>
+                    <p>Kitchen equipped with all tools</p>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact and Booking</h2>
+                <p>We look forward to hearing from you! Contact us and book today.</p>
+            </div>
+
+            <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 4rem;">
+                <div class="card" style="padding: 2rem;">
+                    <h3 style="margin-bottom: 1.5rem;">Write to Us</h3>
+                    <form onsubmit="submitForm(event)">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">Name *</label>
+                                <input type="text" class="form-input" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email *</label>
+                                <input type="email" class="form-input" placeholder="email@example.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Message *</label>
+                            <textarea class="form-input form-textarea" placeholder="Write your message here..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <div>
+                    <h3 style="margin-bottom: 2rem;">Contact Information</h3>
+
+                    <div style="display: flex; align-items: flex-start; margin-bottom: 2rem;">
+                        <div style="background: rgba(245, 158, 11, 0.1); padding: 1rem; border-radius: 0.5rem; margin-right: 1rem;">
+                            <i class="fas fa-map-marker-alt" style="color: var(--primary); font-size: 1.5rem;"></i>
+                        </div>
+                        <div>
+                            <h4 style="font-weight: 600; margin-bottom: 0.25rem;">Address</h4>
+                            <p style="color: var(--gray-600);">8284 Kisapáti, Kossuth utca 78/4</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: flex-start; margin-bottom: 2rem;">
+                        <div style="background: rgba(245, 158, 11, 0.1); padding: 1rem; border-radius: 0.5rem; margin-right: 1rem;">
+                            <i class="fas fa-phone" style="color: var(--primary); font-size: 1.5rem;"></i>
+                        </div>
+                        <div>
+                            <h4 style="font-weight: 600; margin-bottom: 0.25rem;">Phone</h4>
+                            <p style="color: var(--gray-600);">+36 20 773 0807</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: flex-start; margin-bottom: 2rem;">
+                        <div style="background: rgba(245, 158, 11, 0.1); padding: 1rem; border-radius: 0.5rem; margin-right: 1rem;">
+                            <i class="fas fa-envelope" style="color: var(--primary); font-size: 1.5rem;"></i>
+                        </div>
+                        <div>
+                            <h4 style="font-weight: 600; margin-bottom: 0.25rem;">Email</h4>
+                            <p style="color: var(--gray-600);">info@dandelionhouse.hu</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: flex-start;">
+                        <div style="background: rgba(245, 158, 11, 0.1); padding: 1rem; border-radius: 0.5rem; margin-right: 1rem;">
+                            <i class="fas fa-clock" style="color: var(--primary); font-size: 1.5rem;"></i>
+                        </div>
+                        <div>
+                            <h4 style="font-weight: 600; margin-bottom: 0.25rem;">Opening Hours</h4>
+                            <p style="color: var(--gray-600);">24/7 reception</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3><i class="fas fa-seedling"></i> Dandelion Guesthouse</h3>
+                    <p style="color: var(--gray-300); margin-bottom: 1rem;">The meeting of modern comfort and homely atmosphere. Discover the magic of our guesthouse and enjoy memorable moments.</p>
+
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+                        <a href="#" aria-label="Google"><i class="fab fa-google"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#rooms">Rooms</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>Contact</h3>
+                    <div style="color: var(--gray-300);">
+                        <p style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                            <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem; color: var(--primary);"></i>
+                            8284 Kisapáti, Kossuth utca 78/4
+                        </p>
+                        <p style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                            <i class="fas fa-phone" style="margin-right: 0.5rem; color: var(--primary);"></i>
+                            +36 20 773 0807
+                        </p>
+                        <p style="display: flex; align-items: center;">
+                            <i class="fas fa-envelope" style="margin-right: 0.5rem; color: var(--primary);"></i>
+                            info@dandelionhouse.hu
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Dandelion Guesthouse. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Room selection function
+        function selectRoom(roomType) {
+            alert(`You have selected "${roomType}". We will redirect you to the booking page soon.`);
+            // Scroll to contact form
+            document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Form submission
+        function submitForm(event) {
+            event.preventDefault();
+            alert('Thank you for your message! We will contact you soon.');
+            event.target.reset();
+        }
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for animation
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Active navigation highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = link.getAttribute('href') === `#${current}` ? 'var(--primary)' : 'var(--gray-700)';
+            });
+        });
+
+        // Dark mode toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            const icon = document.getElementById('mode-icon');
+            icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            localStorage.setItem('darkMode', isDark);
+        }
+
+        // Load saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            document.getElementById('mode-icon').className = 'fas fa-sun';
+        }
+
+        // Language switcher
+        function toggleLanguageDropdown() {
+            const dropdown = document.getElementById('language-dropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        function switchLanguage(lang) {
+            const currentLang = document.getElementById('current-lang');
+            const dropdown = document.getElementById('language-dropdown');
+            
+            switch(lang) {
+                case 'hu':
+                    currentLang.textContent = 'HU';
+                    window.location.href = 'index.html';
+                    break;
+                case 'en':
+                    currentLang.textContent = 'EN';
+                    window.location.href = 'index-en.html';
+                    break;
+                case 'de':
+                    currentLang.textContent = 'DE';
+                    window.location.href = 'index-de.html';
+                    break;
+            }
+            dropdown.classList.remove('show');
+        }
+
+        // Close top contact bar
+        function closeTopBar() {
+            document.getElementById('top-contact-bar').style.display = 'none';
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('language-dropdown');
+            const button = document.querySelector('.language-btn');
+            
+            if (!button.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
