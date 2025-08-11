@@ -9,6 +9,11 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Flatpickr CSS és JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/hu.js"></script>
 
     <style>
         :root {
@@ -532,6 +537,67 @@
         .animate-fade-in {
             animation: fadeInUp 0.8s ease-out;
         }
+
+        /* Booking Box Styles */
+        .foglalas-box {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        #foglalas-form {
+            background: #ef8b00;
+            padding: 14px 20px;
+            border-radius: 8px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        #datum-range {
+            padding: 12px 16px;
+            font-size: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            width: 280px;
+            background-color: #fff;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        #datum-range:focus {
+            border-color: #e76f51;
+            box-shadow: 0 0 0 2px rgba(231,111,81,0.2);
+            outline: none;
+        }
+
+        #foglalas-form button {
+            background-color: #333;
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 20px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        #foglalas-form button:hover {
+            background-color: #444;
+            transform: scale(1.03);
+        }
+
+        @media (max-width: 768px) {
+            #foglalas-form {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            #datum-range,
+            #foglalas-form button {
+                width: 100%;
+            }
+        }
     /* Top Contact Bar */
         .top-contact-bar {
             background: var(--primary);
@@ -768,6 +834,13 @@
             <div class="section-title">
                 <h2>Szobáink és Apartmanjaink</h2>
                 <p>Minden szoba egyedi hangulat és modern kényelem találkozása. Válassza ki az Önnek legmegfelelőbb szállást.</p>
+            </div>
+
+            <div class="foglalas-box">
+                <form id="foglalas-form" target="_blank" onsubmit="return nyitFoglalas();">
+                    <input type="text" id="datum-range" placeholder="Bejelentkezés — Kijelentkezés" required>
+                    <button type="submit">Foglalhatóság ellenőrzése</button>
+                </form>
             </div>
 
             <div class="grid grid-3">
@@ -1335,6 +1408,27 @@
                 dropdown.classList.remove('show');
             }
         });
+
+        // Initialize Flatpickr for booking
+        flatpickr("#datum-range", {
+            locale: "hu",
+            mode: "range",
+            dateFormat: "Y-m-d",
+            minDate: "today"
+        });
+
+        function nyitFoglalas() {
+            const datumRange = document.getElementById('datum-range').value.split(" - ");
+            if (datumRange.length < 2) {
+                alert("Kérlek, válaszd ki az érkezési és távozási dátumot.");
+                return false;
+            }
+            const checkin = datumRange[0];
+            const checkout = datumRange[1];
+            const url = `https://ibe.sabeeapp.com/properties/Dandelion-Vend%C3%A9gh%C3%A1zak-foglal%C3%A1s/?p=bSp3970b30e1042d58f&checkin=${checkin}&checkout=${checkout}`;
+            window.open(url, '_blank');
+            return false;
+        }
     </script>
 </body>
 </html>
