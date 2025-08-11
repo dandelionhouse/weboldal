@@ -300,7 +300,7 @@
 
         .card-footer {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
         }
 
@@ -336,6 +336,26 @@
             justify-content: center;
             margin: 0 auto 1rem;
             font-size: 2rem;
+        }
+
+        .icon-wifi {
+            background: #10b981;
+            color: #34d399;
+        }
+
+        .icon-parking {
+            background: #3b82f6;
+            color: #60a5fa;
+        }
+
+        .icon-ac {
+            background: #10b981;
+            color: #34d399;
+        }
+
+        .icon-kitchen {
+            background: #8b5cf6;
+            color: #a78bfa;
         }
 
         .icon-primary {
@@ -419,13 +439,13 @@
         }
 
         .footer a {
-            color: var(--gray-300);
+            color: var(--white);
             text-decoration: none;
             transition: color 0.3s;
         }
 
         .footer a:hover {
-            color: var(--white);
+            color: var(--primary);
         }
 
         .social-links {
@@ -437,16 +457,19 @@
         .social-links a {
             width: 2.5rem;
             height: 2.5rem;
-            background: var(--primary);
+            background: transparent;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: transform 0.3s;
+            color: var(--primary);
+            font-size: 1.5rem;
         }
 
         .social-links a:hover {
             transform: scale(1.1);
+            color: #fbbf24;
         }
 
         .footer-bottom {
@@ -591,7 +614,6 @@
                             <span class="badge badge-green">Felszerelt konyha</span>
                         </div>
                         <div class="card-footer">
-                            <div class="price">25 000 Ft <span class="price-unit">/éj</span></div>
                             <button class="btn btn-primary" onclick="selectRoom('D1 Vendégház')">Választom</button>
                         </div>
                     </div>
@@ -608,7 +630,6 @@
                             <span class="badge badge-green">Székelydézsa</span>
                         </div>
                         <div class="card-footer">
-                            <div class="price">20 000 Ft <span class="price-unit">/éj</span></div>
                             <button class="btn btn-primary" onclick="selectRoom('D2 Vendégház')">Választom</button>
                         </div>
                     </div>
@@ -625,7 +646,6 @@
                             <span class="badge badge-green">Saját dézsa</span>
                         </div>
                         <div class="card-footer">
-                            <div class="price">18 000 Ft <span class="price-unit">/éj</span></div>
                             <button class="btn btn-primary" onclick="selectRoom('Fügeház')">Választom</button>
                         </div>
                     </div>
@@ -645,7 +665,7 @@
             <!-- Main Services Grid -->
             <div class="grid grid-4" style="margin-bottom: 4rem;">
                 <div class="service-card">
-                    <div class="service-icon icon-secondary">
+                    <div class="service-icon icon-wifi">
                         <i class="fas fa-wifi"></i>
                     </div>
                     <h3>Ingyenes WiFi</h3>
@@ -653,7 +673,7 @@
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon icon-secondary">
+                    <div class="service-icon icon-parking">
                         <i class="fas fa-car"></i>
                     </div>
                     <h3>Ingyenes Parkolás</h3>
@@ -661,7 +681,7 @@
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon icon-secondary">
+                    <div class="service-icon icon-ac">
                         <i class="fas fa-snowflake"></i>
                     </div>
                     <h3>Légkondicionálás</h3>
@@ -669,7 +689,7 @@
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon icon-secondary">
+                    <div class="service-icon icon-kitchen">
                         <i class="fas fa-utensils"></i>
                     </div>
                     <h3>Teljes Konyha</h3>
