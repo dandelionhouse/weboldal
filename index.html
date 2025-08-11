@@ -583,6 +583,13 @@
             color: var(--gray-200);
         }
 
+        /* Navigation Controls */
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
         /* Language Switcher */
         .language-switcher {
             position: relative;
@@ -598,6 +605,7 @@
             align-items: center;
             gap: 0.25rem;
             font-size: 0.875rem;
+            height: 2.5rem;
         }
 
         .language-btn:hover {
@@ -614,6 +622,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             display: none;
             z-index: 1000;
+            min-width: 120px;
         }
 
         .language-dropdown.show {
@@ -642,8 +651,15 @@
             }
             
             .nav-controls {
-                display: flex;
-                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
             }
         }
     </style>
