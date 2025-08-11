@@ -12,10 +12,10 @@
 
     <style>
         :root {
-            --primary: #3b82f6;
-            --primary-dark: #2563eb;
-            --secondary: #f59e0b;
-            --secondary-dark: #d97706;
+            --primary: #f59e0b;
+            --primary-dark: #d97706;
+            --secondary: #3b82f6;
+            --secondary-dark: #2563eb;
             --gray-50: #f9fafb;
             --gray-100: #f3f4f6;
             --gray-200: #e5e7eb;
@@ -638,17 +638,18 @@
     <section id="services" class="section">
         <div class="container">
             <div class="section-title">
-                <h2>Szolgáltatásaink</h2>
-                <p>Minden, amire szüksége lehet egy tökéletes tartózkodáshoz. Szolgáltatásaink az Ön kényelmét szolgálják.</p>
+                <h2>Szolgáltatásaink és Felszereltségek</h2>
+                <p>Minden, amire szüksége lehet egy tökéletes tartózkodáshoz. Teljes felszereltségű szállás modern kényelemmel.</p>
             </div>
 
-            <div class="grid grid-4">
+            <!-- Main Services Grid -->
+            <div class="grid grid-4" style="margin-bottom: 4rem;">
                 <div class="service-card">
                     <div class="service-icon icon-primary">
                         <i class="fas fa-wifi"></i>
                     </div>
                     <h3>Ingyenes WiFi</h3>
-                    <p>Nagy sebességű internet az egész épületben</p>
+                    <p>Nagy sebességű internet a teljes épületben</p>
                 </div>
 
                 <div class="service-card">
@@ -656,23 +657,206 @@
                         <i class="fas fa-car"></i>
                     </div>
                     <h3>Ingyenes Parkolás</h3>
-                    <p>Biztonságos parkolóhely minden vendégnek</p>
+                    <p>Privát parkolóhely a helyszínen</p>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon icon-green">
-                        <i class="fas fa-utensils"></i>
+                        <i class="fas fa-snowflake"></i>
                     </div>
-                    <h3>Reggeli</h3>
-                    <p>Friss, helyi alapanyagokból készült reggeli</p>
+                    <h3>Légkondicionálás</h3>
+                    <p>Komfort klíma minden szobában</p>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon icon-primary">
-                        <i class="fas fa-bell"></i>
+                        <i class="fas fa-utensils"></i>
                     </div>
-                    <h3>24/7 Recepció</h3>
-                    <p>Állandó segítség és információ</p>
+                    <h3>Teljes Konyha</h3>
+                    <p>Minden eszközzel felszerelt konyha</p>
+                </div>
+            </div>
+
+            <!-- Detailed Amenities -->
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <!-- Accommodation Features -->
+                <div class="card" style="padding: 2rem;">
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem; display: flex; align-items: center;">
+                        <i class="fas fa-home" style="margin-right: 0.5rem;"></i>
+                        Szállás Szolgáltatások
+                    </h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Saját fürdőszoba és bejárat
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Erkély és terasz
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Családi szobák
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Síkképernyős tévé
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Kandalló és ülősarok
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Kitchen Equipment -->
+                <div class="card" style="padding: 2rem;">
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem; display: flex; align-items: center;">
+                        <i class="fas fa-blender" style="margin-right: 0.5rem;"></i>
+                        Konyhai Felszerelés
+                    </h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Teljes konyha (főzőlap, sütő)
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Hűtőszekrény és mikrohullámú
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Kávéfőző és vízforraló
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Kenyérpirító és konyhai eszközök
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Étkezőasztal és etetőszék
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Outdoor Features -->
+                <div class="card" style="padding: 2rem;">
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem; display: flex; align-items: center;">
+                        <i class="fas fa-tree" style="margin-right: 0.5rem;"></i>
+                        Külső Területek
+                    </h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Kert kerti bútorokkal
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Grillsütő és grill lehetőség
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Kültéri étkező és pihenősarok
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Napernyők és szabadtéri fürdő
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Kilátás a hegyre és kertre
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Activities -->
+                <div class="card" style="padding: 2rem;">
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem; display: flex; align-items: center;">
+                        <i class="fas fa-hiking" style="margin-right: 0.5rem;"></i>
+                        Szabadidős Lehetőségek
+                    </h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Túrázás és kerékpározás
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Lovaglás (felár ellenében)
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Kenu és vízi sportok
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Horgászási lehetőség
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Reggeli a szobában (felár)
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Bathroom & Comfort -->
+                <div class="card" style="padding: 2rem;">
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem; display: flex; align-items: center;">
+                        <i class="fas fa-bath" style="margin-right: 0.5rem;"></i>
+                        Komfort és Biztonság
+                    </h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Fürdőkád/zuhany, hajszárító
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Törölközők és ágynemű
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Vasalási lehetőség
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Tűzvédelmi rendszerek
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Nemdohányzó környezet
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Languages & Services -->
+                <div class="card" style="padding: 2rem;">
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem; display: flex; align-items: center;">
+                        <i class="fas fa-concierge-bell" style="margin-right: 0.5rem;"></i>
+                        További Szolgáltatások
+                    </h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Számla kérhető
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Egyedi be- és kijelentkezés
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Babakocsi biztosítása
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Angol és magyar nyelvű kiszolgálás
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-check-circle" style="color: var(--green-600); margin-right: 0.5rem;"></i>
+                            Tea- és kávéfőző minden szobában
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
