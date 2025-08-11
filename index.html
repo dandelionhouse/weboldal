@@ -532,9 +532,65 @@
         .animate-fade-in {
             animation: fadeInUp 0.8s ease-out;
         }
+    /* Top Contact Bar */
+        .top-contact-bar {
+            background: var(--gray-800);
+            color: var(--white);
+            padding: 0.5rem 0;
+            font-size: 0.875rem;
+        }
+
+        .top-contact-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item i {
+            color: var(--primary);
+        }
+
+        .contact-item a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .top-contact-content {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Top Contact Bar -->
+    <div class="top-contact-bar">
+        <div class="container">
+            <div class="top-contact-content">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+36207730807">+36 20 773 0807</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:info@dandelionhouse.hu">info@dandelionhouse.hu</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav>
         <div class="container">
@@ -906,7 +962,7 @@
                 <div style="position: relative;">
                     <img src="dezsahatter.png" alt="Vendégház belső tér" style="width: 100%; border-radius: 1rem; box-shadow: 0 20px 25px rgba(0,0,0,0.15);">
                     <div style="position: absolute; bottom: -1.5rem; right: -1.5rem; background: var(--secondary); color: var(--white); padding: 1.5rem; border-radius: 1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.2); text-align: center;">
-                        <div style="font-size: 1.5rem; font-weight: 700;">4.8/5</div>
+                        <div style="font-size: 1.5rem; font-weight: 700;">4.9/5</div>
                         <div style="font-size: 0.875rem;">Google értékelés</div>
                     </div>
                 </div>
@@ -968,7 +1024,7 @@
                         </div>
                         <div>
                             <h4 style="font-weight: 600; margin-bottom: 0.25rem;">Cím</h4>
-                            <p style="color: var(--gray-600);">1234 Budapest, Példa utca 12.</p>
+                            <p style="color: var(--gray-600);">8284 Kisapáti, Kossuth utca 78/4</p>
                         </div>
                     </div>
 
@@ -978,7 +1034,7 @@
                         </div>
                         <div>
                             <h4 style="font-weight: 600; margin-bottom: 0.25rem;">Telefon</h4>
-                            <p style="color: var(--gray-600);">+36 1 234 5678</p>
+                            <p style="color: var(--gray-600);">+36 20 773 0807</p>
                         </div>
                     </div>
 
@@ -1038,11 +1094,11 @@
                     <div style="color: var(--gray-300);">
                         <p style="display: flex; align-items: center; margin-bottom: 0.5rem;">
                             <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem; color: var(--primary);"></i>
-                            1234 Budapest, Példa utca 12.
+                            8284 Kisapáti, Kossuth utca 78/4
                         </p>
                         <p style="display: flex; align-items: center; margin-bottom: 0.5rem;">
                             <i class="fas fa-phone" style="margin-right: 0.5rem; color: var(--primary);"></i>
-                            +36 1 234 5678
+                            +36 20 773 0807
                         </p>
                         <p style="display: flex; align-items: center;">
                             <i class="fas fa-envelope" style="margin-right: 0.5rem; color: var(--primary);"></i>
