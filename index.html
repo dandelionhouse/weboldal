@@ -534,10 +534,11 @@
         }
     /* Top Contact Bar */
         .top-contact-bar {
-            background: var(--gray-800);
+            background: var(--primary);
             color: var(--white);
-            padding: 0.5rem 0;
-            font-size: 0.875rem;
+            padding: 0.3rem 0;
+            font-size: 0.8rem;
+            position: relative;
         }
 
         .top-contact-content {
@@ -554,7 +555,7 @@
         }
 
         .contact-item i {
-            color: var(--primary);
+            color: var(--white);
         }
 
         .contact-item a {
@@ -563,7 +564,109 @@
         }
 
         .contact-item a:hover {
-            color: var(--primary);
+            color: var(--gray-200);
+        }
+
+        .close-bar {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .close-bar:hover {
+            color: var(--gray-200);
+        }
+
+        /* Dark Mode */
+        .dark-mode-toggle {
+            margin-right: 1rem;
+        }
+
+        .toggle-btn {
+            background: var(--gray-200);
+            border: none;
+            border-radius: 1rem;
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.875rem;
+        }
+
+        .toggle-btn:hover {
+            background: var(--gray-300);
+        }
+
+        body.dark-mode {
+            --white: #1f2937;
+            --gray-50: #111827;
+            --gray-100: #1f2937;
+            --gray-200: #374151;
+            --gray-300: #4b5563;
+            --gray-600: #d1d5db;
+            --gray-700: #f3f4f6;
+            --gray-800: #f9fafb;
+            --gray-900: #ffffff;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: relative;
+            margin-right: 1rem;
+        }
+
+        .language-btn {
+            background: var(--gray-200);
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.875rem;
+        }
+
+        .language-btn:hover {
+            background: var(--gray-300);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: none;
+            z-index: 1000;
+        }
+
+        .language-dropdown.show {
+            display: block;
+        }
+
+        .language-option {
+            display: block;
+            width: 100%;
+            padding: 0.5rem 1rem;
+            border: none;
+            background: none;
+            text-align: left;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .language-option:hover {
+            background: var(--gray-100);
         }
 
         @media (max-width: 768px) {
@@ -571,12 +674,17 @@
                 flex-direction: column;
                 gap: 0.5rem;
             }
+            
+            .nav-controls {
+                display: flex;
+                align-items: center;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Top Contact Bar -->
-    <div class="top-contact-bar">
+    <div class="top-contact-bar" id="top-contact-bar">
         <div class="container">
             <div class="top-contact-content">
                 <div class="contact-item">
@@ -588,6 +696,9 @@
                     <a href="mailto:info@dandelionhouse.hu">info@dandelionhouse.hu</a>
                 </div>
             </div>
+            <button class="close-bar" onclick="closeTopBar()">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
     </div>
 
@@ -608,7 +719,26 @@
                     <li><a href="#contact">Kapcsolat</a></li>
                 </ul>
 
-                <div>
+                <div class="nav-controls">
+                    <div class="language-switcher">
+                        <button class="language-btn" onclick="toggleLanguageDropdown()">
+                            <i class="fas fa-globe"></i>
+                            <span id="current-lang">HU</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="language-dropdown" id="language-dropdown">
+                            <button class="language-option" onclick="switchLanguage('hu')">🇭🇺 Magyar</button>
+                            <button class="language-option" onclick="switchLanguage('en')">🇬🇧 English</button>
+                            <button class="language-option" onclick="switchLanguage('de')">🇩🇪 Deutsch</button>
+                        </div>
+                    </div>
+                    
+                    <div class="dark-mode-toggle">
+                        <button class="toggle-btn" onclick="toggleDarkMode()">
+                            <i class="fas fa-moon" id="mode-icon"></i>
+                        </button>
+                    </div>
+                    
                     <a href="#contact" class="btn btn-primary">Foglalás</a>
                     <button class="mobile-menu-btn">
                         <i class="fas fa-bars"></i>
@@ -636,7 +766,7 @@
             <div class="hero-features">
                 <div class="hero-feature">
                     <i class="fas fa-star"></i>
-                    <span>4.9/5 értékelés</span>
+                    <span>4.8/5 értékelés</span>
                 </div>
                 <div class="hero-feature">
                     <i class="fas fa-wifi"></i>
@@ -962,7 +1092,7 @@
                 <div style="position: relative;">
                     <img src="dezsahatter.png" alt="Vendégház belső tér" style="width: 100%; border-radius: 1rem; box-shadow: 0 20px 25px rgba(0,0,0,0.15);">
                     <div style="position: absolute; bottom: -1.5rem; right: -1.5rem; background: var(--secondary); color: var(--white); padding: 1.5rem; border-radius: 1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.2); text-align: center;">
-                        <div style="font-size: 1.5rem; font-weight: 700;">4.9/5</div>
+                        <div style="font-size: 1.5rem; font-weight: 700;">4.8/5</div>
                         <div style="font-size: 0.875rem;">Google értékelés</div>
                     </div>
                 </div>
@@ -993,16 +1123,7 @@
                             </div>
                         </div>
 
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label class="form-label">Érkezés</label>
-                                <input type="date" class="form-input">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Távozás</label>
-                                <input type="date" class="form-input">
-                            </div>
-                        </div>
+                        
 
                         <div class="form-group">
                             <label class="form-label">Üzenet *</label>
@@ -1189,6 +1310,63 @@
             navLinks.forEach(link => {
                 link.style.color = link.getAttribute('href') === `#${current}` ? 'var(--primary)' : 'var(--gray-700)';
             });
+        });
+
+        // Dark mode toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            const icon = document.getElementById('mode-icon');
+            icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            localStorage.setItem('darkMode', isDark);
+        }
+
+        // Load saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            document.getElementById('mode-icon').className = 'fas fa-sun';
+        }
+
+        // Language switcher
+        function toggleLanguageDropdown() {
+            const dropdown = document.getElementById('language-dropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        function switchLanguage(lang) {
+            const currentLang = document.getElementById('current-lang');
+            const dropdown = document.getElementById('language-dropdown');
+            
+            switch(lang) {
+                case 'hu':
+                    currentLang.textContent = 'HU';
+                    window.location.href = 'index.html';
+                    break;
+                case 'en':
+                    currentLang.textContent = 'EN';
+                    window.location.href = 'index-en.html';
+                    break;
+                case 'de':
+                    currentLang.textContent = 'DE';
+                    window.location.href = 'index-de.html';
+                    break;
+            }
+            dropdown.classList.remove('show');
+        }
+
+        // Close top contact bar
+        function closeTopBar() {
+            document.getElementById('top-contact-bar').style.display = 'none';
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('language-dropdown');
+            const button = document.querySelector('.language-btn');
+            
+            if (!button.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.remove('show');
+            }
         });
     </script>
 </body>
