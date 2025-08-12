@@ -1,1 +1,891 @@
 
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D2 Vendégház - Dandelion Vendégház</title>
+    <meta name="description" content="D2 Vendégház - hangulatos galériás ház pároknak vagy kisebb családoknak székelydézsával.">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Flatpickr CSS és JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/hu.js"></script>
+
+    <style>
+        :root {
+            --primary: #f59e0b;
+            --primary-dark: #d97706;
+            --secondary: #3b82f6;
+            --secondary-dark: #2563eb;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --white: #ffffff;
+            --green-600: #16a34a;
+            --green-100: #dcfce7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--gray-900);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--gray-700);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 100%),
+                        url('d2_main.png') center/cover;
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            margin-top: 4rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Section */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .bg-gray {
+            background: var(--gray-50);
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Cards */
+        .card {
+            background: var(--white);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .info-card {
+            background: var(--white);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .info-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--primary);
+        }
+
+        .info-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card p {
+            color: var(--gray-600);
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        /* Service Lists */
+        .service-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-category {
+            background: var(--white);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-category h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .service-category h3 i {
+            margin-right: 0.5rem;
+        }
+
+        .service-category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-category li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            color: var(--gray-700);
+        }
+
+        .service-category li i {
+            color: var(--green-600);
+            margin-right: 0.5rem;
+        }
+
+        /* Booking Bar */
+        .foglalas-box {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+            padding: 0 1rem;
+        }
+
+        .booking-container {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 2rem 3rem;
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px rgba(245, 158, 11, 0.3);
+            width: 100%;
+            max-width: 900px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            z-index: 1;
+        }
+
+        .booking-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .booking-title {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .booking-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        #foglalas-form {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .date-input-container {
+            position: relative;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        #datum-range {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            color: var(--gray-800);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        #datum-range:focus {
+            border-color: var(--white);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3), 0 8px 25px rgba(0, 0, 0, 0.15);
+            outline: none;
+            transform: translateY(-2px);
+        }
+
+        #datum-range::placeholder {
+            color: var(--gray-500);
+            font-weight: 400;
+        }
+
+        .booking-button {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+            color: var(--white);
+            font-weight: 700;
+            border: none;
+            border-radius: 1rem;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+            min-width: 200px;
+            justify-content: center;
+        }
+
+        .booking-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gray-900);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer ul {
+            list-style: none;
+        }
+
+        .footer ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--gray-800);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--gray-400);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .booking-container {
+                padding: 1.5rem 2rem;
+                border-radius: 1.5rem;
+                margin: 0 1rem;
+            }
+
+            #foglalas-form {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .date-input-container {
+                min-width: 100%;
+            }
+
+            .booking-button {
+                width: 100%;
+                min-width: auto;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-seedling"></i>
+                    Dandelion Vendégház
+                </a>
+
+                <ul class="nav-menu">
+                    <li><a href="index.html">Főoldal</a></li>
+                    <li><a href="index.html#rooms">Szobák</a></li>
+                    <li><a href="index.html#services">Szolgáltatások</a></li>
+                    <li><a href="index.html#contact">Kapcsolat</a></li>
+                </ul>
+
+                <div class="nav-controls">
+                    <a href="index.html#contact" class="btn btn-primary">Foglalás</a>
+                    <button class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content animate-fade-in">
+            <h1><span style="color: var(--primary)">D2</span> Vendégház</h1>
+            <p>Hangulatos galériás ház pároknak vagy kisebb családoknak, székelydézsával és csendes, természetközeli környezettel.</p>
+        </div>
+    </section>
+
+    <!-- Basic Info Section -->
+    <section class="section">
+        <div class="container">
+            <div class="grid grid-4">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Férőhely</h3>
+                    <p>4 fő számára alkalmas</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>Parkolás</h3>
+                    <p>2 ingyenes parkolóhely</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-hot-tub"></i>
+                    </div>
+                    <h3>Dézsa</h3>
+                    <p>Saját székelydézsa</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Stílus</h3>
+                    <p>Galériás elrendezés</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="section bg-gray">
+        <div class="container">
+            <div class="foglalas-box">
+                <div class="booking-container">
+                    <div class="booking-content">
+                        <h3 class="booking-title">
+                            <i class="fas fa-calendar-check"></i>
+                            D2 Vendégház Foglalás
+                        </h3>
+                        <p class="booking-subtitle">Válassza ki az érkezési és távozási dátumot a D2 Vendégházhoz</p>
+                        
+                        <form id="foglalas-form" target="_blank" onsubmit="return nyitFoglalas();">
+                            <div class="date-input-container">
+                                <input type="text" id="datum-range" placeholder="Bejelentkezés — Kijelentkezés" required>
+                            </div>
+                            <button type="submit" class="booking-button">
+                                <i class="fas fa-search"></i>
+                                Foglalhatóság Ellenőrzése
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Description Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>A D2 Vendégház Hangulata</h2>
+                <p>Romantikus galériás otthon a természet ölelésében</p>
+            </div>
+
+            <div class="grid grid-2" style="align-items: center;">
+                <div>
+                    <p style="font-size: 1.125rem; line-height: 1.8; color: var(--gray-700); margin-bottom: 2rem;">
+                        A D2 Vendégház tökéletes választás párok számára, akik egy romantikus és intim környezetben szeretnének kikapcsolódni. A galériás elrendezés különleges hangulatot teremt, ahol a modern kényelem találkozik a rusztikus bájjal.
+                    </p>
+                    <p style="font-size: 1.125rem; line-height: 1.8; color: var(--gray-700); margin-bottom: 2rem;">
+                        A ház legnagyobb értéke a saját székelydézsa, ahol este a csillagos ég alatt relaxálhatnak, miközben élvezik a természet nyugalmát. A csendes, természetközeli környezet ideális a stressz oldására és a romantikus pillanatok megélésére.
+                    </p>
+                    <p style="font-size: 1.125rem; line-height: 1.8; color: var(--gray-700);">
+                        A galériás hálótér egyedülálló élményt nyújt, míg a földszinti nappali és konyha minden kényelmet biztosít. A gondosan kiválasztott berendezés és a természetes anyagok használata otthonos és meghitt légkört teremt.
+                    </p>
+                </div>
+                <div>
+                    <img src="d2_main.png" alt="D2 Vendégház belseje" style="width: 100%; border-radius: 1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section bg-gray">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galéria</h2>
+                <p>Tekintse meg a D2 Vendégház belső és külső tereit</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="d2_main.png" alt="D2 külső" />
+                </div>
+                <div class="gallery-item">
+                    <img src="dezsahatter.png" alt="Székelydézsa" />
+                </div>
+                <div class="gallery-item">
+                    <img src="badacsony.jpg" alt="Környezet" />
+                </div>
+                <div class="gallery-item">
+                    <img src="d2_main.png" alt="Galéria" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Szolgáltatások és Felszereltség</h2>
+                <p>Mindaz, amire szüksége lehet egy tökéletes tartózkodáshoz – teljes felszereltségű szállás, modern kényelemmel.</p>
+            </div>
+
+            <div class="service-list">
+                <div class="service-category">
+                    <h3><i class="fas fa-home"></i> Szállás Szolgáltatások</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Saját fürdőszoba és bejárat</li>
+                        <li><i class="fas fa-check-circle"></i> Erkély és terasz</li>
+                        <li><i class="fas fa-check-circle"></i> Galériás hálószoba</li>
+                        <li><i class="fas fa-check-circle"></i> Síkképernyős tévé</li>
+                        <li><i class="fas fa-check-circle"></i> Kandalló és ülősarok</li>
+                    </ul>
+                </div>
+
+                <div class="service-category">
+                    <h3><i class="fas fa-blender"></i> Konyhai Felszerelés</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Teljes konyha (főzőlap, sütő)</li>
+                        <li><i class="fas fa-check-circle"></i> Hűtőszekrény és mikrohullámú</li>
+                        <li><i class="fas fa-check-circle"></i> Kávéfőző és vízforraló</li>
+                        <li><i class="fas fa-check-circle"></i> Kenyérpirító és konyhai eszközök</li>
+                        <li><i class="fas fa-check-circle"></i> Étkezőasztal és etetőszék</li>
+                    </ul>
+                </div>
+
+                <div class="service-category">
+                    <h3><i class="fas fa-tree"></i> Külső Területek</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Kert kerti bútorokkal</li>
+                        <li><i class="fas fa-check-circle"></i> Grillsütő és grill lehetőség</li>
+                        <li><i class="fas fa-check-circle"></i> Kültéri étkező és pihenősarok</li>
+                        <li><i class="fas fa-check-circle"></i> Napernyők és szabadtéri fürdő</li>
+                        <li><i class="fas fa-check-circle"></i> Kilátás a hegyre és kertre</li>
+                    </ul>
+                </div>
+
+                <div class="service-category">
+                    <h3><i class="fas fa-hiking"></i> Szabadidős Lehetőségek</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Túrázás és kerékpározás</li>
+                        <li><i class="fas fa-check-circle"></i> Lovaglás (felár ellenében)</li>
+                        <li><i class="fas fa-check-circle"></i> Kenu és vízi sportok</li>
+                        <li><i class="fas fa-check-circle"></i> Horgászási lehetőség</li>
+                        <li><i class="fas fa-check-circle"></i> Reggeli a szobában (felár)</li>
+                    </ul>
+                </div>
+
+                <div class="service-category">
+                    <h3><i class="fas fa-bath"></i> Komfort és Biztonság</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Fürdőkád/zuhany, hajszárító</li>
+                        <li><i class="fas fa-check-circle"></i> Törölközők és ágynemű</li>
+                        <li><i class="fas fa-check-circle"></i> Vasalási lehetőség</li>
+                        <li><i class="fas fa-check-circle"></i> Tűzvédelmi rendszerek</li>
+                        <li><i class="fas fa-check-circle"></i> Nemdohányzó környezet</li>
+                    </ul>
+                </div>
+
+                <div class="service-category">
+                    <h3><i class="fas fa-concierge-bell"></i> További Szolgáltatások</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Számla kérhető</li>
+                        <li><i class="fas fa-check-circle"></i> Egyedi be- és kijelentkezés</li>
+                        <li><i class="fas fa-check-circle"></i> Babakocsi biztosítása</li>
+                        <li><i class="fas fa-check-circle"></i> Angol és magyar nyelvű kiszolgálás</li>
+                        <li><i class="fas fa-check-circle"></i> Tea- és kávéfőző minden szobában</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Main Services Grid -->
+            <div class="grid grid-4" style="margin-top: 4rem;">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3>Ingyenes WiFi</h3>
+                    <p>Nagy sebességű internet a teljes épületben</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>Ingyenes Parkolás</h3>
+                    <p>Privát parkolóhely a helyszínen</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                    <h3>Légkondicionálás</h3>
+                    <p>Komfort klíma minden szobában</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Teljes Konyha</h3>
+                    <p>Minden eszközzel felszerelt konyha</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3><i class="fas fa-seedling"></i> Dandelion Vendégház</h3>
+                    <p style="color: var(--gray-300); margin-bottom: 1rem;">Modern kényelem és otthonos légkör találkozása. Fedezze fel vendégházunk varázsát és élvezze az emlékezetes pillanatokat.</p>
+                </div>
+
+                <div>
+                    <h3>Gyors linkek</h3>
+                    <ul>
+                        <li><a href="index.html">Főoldal</a></li>
+                        <li><a href="d1.html">D1 Vendégház</a></li>
+                        <li><a href="fuge.html">Fügeház</a></li>
+                        <li><a href="index.html#contact">Kapcsolat</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>Kapcsolat</h3>
+                    <div style="color: var(--gray-300);">
+                        <p style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                            <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem; color: var(--primary);"></i>
+                            8284 Kisapáti, Kossuth utca 78/4
+                        </p>
+                        <p style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                            <i class="fas fa-phone" style="margin-right: 0.5rem; color: var(--primary);"></i>
+                            +36 20 773 0807
+                        </p>
+                        <p style="display: flex; align-items: center;">
+                            <i class="fas fa-envelope" style="margin-right: 0.5rem; color: var(--primary);"></i>
+                            info@dandelionhouse.hu
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Dandelion Vendégház. Minden jog fenntartva.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Flatpickr for booking
+        flatpickr("#datum-range", {
+            locale: "hu",
+            mode: "range",
+            dateFormat: "Y-m-d",
+            minDate: "today"
+        });
+
+        function nyitFoglalas() {
+            const datumRange = document.getElementById('datum-range').value.split(" - ");
+            if (datumRange.length < 2) {
+                alert("Kérlek, válaszd ki az érkezési és távozási dátumot.");
+                return false;
+            }
+            const checkin = datumRange[0];
+            const checkout = datumRange[1];
+            const url = `https://ibe.sabeeapp.com/properties/Dandelion-Vend%C3%A9gh%C3%A1zak-foglal%C3%A1s/?p=bSp3970b30e1042d58f&checkin=${checkin}&checkout=${checkout}`;
+            window.open(url, '_blank');
+            return false;
+        }
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (mobileMenuBtn && navMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+            });
+        }
+    </script>
+</body>
+</html>
