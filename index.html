@@ -538,64 +538,201 @@
             animation: fadeInUp 0.8s ease-out;
         }
 
-        /* Booking Box Styles */
+        /* Modern Booking Bar Styles */
         .foglalas-box {
             display: flex;
             justify-content: center;
-            margin: 30px 0;
+            margin: 40px 0;
+            padding: 0 1rem;
+        }
+
+        .booking-container {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 2rem 3rem;
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px rgba(245, 158, 11, 0.3);
+            width: 100%;
+            max-width: 900px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            z-index: 1;
+        }
+
+        .booking-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .booking-title {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .booking-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1rem;
         }
 
         #foglalas-form {
-            background: #ef8b00;
-            padding: 14px 20px;
-            border-radius: 8px;
             display: flex;
-            gap: 12px;
+            gap: 1rem;
             align-items: center;
+            justify-content: center;
             flex-wrap: wrap;
         }
 
+        .date-input-container {
+            position: relative;
+            flex: 1;
+            min-width: 300px;
+        }
+
         #datum-range {
-            padding: 12px 16px;
-            font-size: 15px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            width: 350px;
-            background-color: #fff;
-            box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+            width: 100%;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            color: var(--gray-800);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         #datum-range:focus {
-            border-color: #e76f51;
-            box-shadow: 0 0 0 2px rgba(231,111,81,0.2);
+            border-color: var(--white);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3), 0 8px 25px rgba(0, 0, 0, 0.15);
             outline: none;
+            transform: translateY(-2px);
         }
 
-        #foglalas-form button {
-            background-color: #8b5cf6;
-            color: #fff;
-            font-weight: bold;
+        #datum-range::placeholder {
+            color: var(--gray-500);
+            font-weight: 400;
+        }
+
+        .booking-button {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+            color: var(--white);
+            font-weight: 700;
             border: none;
-            border-radius: 6px;
-            padding: 12px 20px;
-            font-size: 15px;
+            border-radius: 1rem;
+            padding: 1rem 2rem;
+            font-size: 1rem;
             cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+            min-width: 200px;
+            justify-content: center;
         }
 
-        #foglalas-form button:hover {
-            background-color: #7c3aed;
-            transform: scale(1.03);
+        .booking-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        }
+
+        .booking-button:active {
+            transform: translateY(-1px);
+        }
+
+        .booking-features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .booking-feature {
+            display: flex;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.875rem;
+        }
+
+        .booking-feature i {
+            color: var(--white);
+            margin-right: 0.5rem;
+            font-size: 1rem;
         }
 
         @media (max-width: 768px) {
+            .booking-container {
+                padding: 1.5rem 2rem;
+                border-radius: 1.5rem;
+                margin: 0 1rem;
+            }
+
+            .booking-title {
+                font-size: 1.25rem;
+                margin-bottom: 1rem;
+            }
+
+            .booking-subtitle {
+                font-size: 0.875rem;
+                margin-bottom: 1.5rem;
+            }
+
             #foglalas-form {
                 flex-direction: column;
-                align-items: stretch;
+                gap: 1rem;
             }
-            #datum-range,
-            #foglalas-form button {
+
+            .date-input-container {
+                min-width: 100%;
+            }
+
+            .booking-button {
                 width: 100%;
+                min-width: auto;
+            }
+
+            .booking-features {
+                flex-direction: column;
+                gap: 0.75rem;
+                margin-top: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .booking-container {
+                padding: 1.25rem 1.5rem;
+                margin: 0 0.5rem;
+            }
+
+            #datum-range {
+                padding: 0.875rem 1.25rem;
+                font-size: 0.9rem;
+            }
+
+            .booking-button {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.9rem;
             }
         }
     /* Top Contact Bar */
@@ -800,7 +937,7 @@
     <section id="home" class="hero">
         <div class="hero-content animate-fade-in">
             <h1>Üdvözöljük a <span style="color: var(--primary)">Dandelion</span> Vendégházban</h1>
-            <p>Fedezze fel a tökéletes harmóniát a modern kényelem és az otthonos légkör között. Élvezze az emlékezetes pillanatokat vendégházunkban.</p>
+            <p>Menekülj a hétköznapokból, ahol a kényelem és a jó hangulat találkozik – nálunk kezdődik a kikapcsolódás.</p>
 
             <div class="hero-buttons">
                 <a href="#rooms" class="btn btn-primary">
@@ -832,10 +969,40 @@
     <section id="rooms" class="section bg-gray">
         <div class="container">
             <div class="foglalas-box">
-                <form id="foglalas-form" target="_blank" onsubmit="return nyitFoglalas();">
-                    <input type="text" id="datum-range" placeholder="Bejelentkezés — Kijelentkezés" required>
-                    <button type="submit">Foglalhatóság ellenőrzése</button>
-                </form>
+                <div class="booking-container">
+                    <div class="booking-content">
+                        <h3 class="booking-title">
+                            <i class="fas fa-calendar-check"></i>
+                            Azonnali Foglalás
+                        </h3>
+                        <p class="booking-subtitle">Válassza ki az érkezési és távozási dátumot, és ellenőrizze a szabad kapacitásokat</p>
+                        
+                        <form id="foglalas-form" target="_blank" onsubmit="return nyitFoglalas();">
+                            <div class="date-input-container">
+                                <input type="text" id="datum-range" placeholder="Bejelentkezés — Kijelentkezés" required>
+                            </div>
+                            <button type="submit" class="booking-button">
+                                <i class="fas fa-search"></i>
+                                Foglalhatóság Ellenőrzése
+                            </button>
+                        </form>
+
+                        <div class="booking-features">
+                            <div class="booking-feature">
+                                <i class="fas fa-bolt"></i>
+                                <span>Azonnali visszaigazolás</span>
+                            </div>
+                            <div class="booking-feature">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Biztonságos fizetés</span>
+                            </div>
+                            <div class="booking-feature">
+                                <i class="fas fa-times-circle"></i>
+                                <span>Ingyenes lemondás</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="section-title">
