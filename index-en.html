@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +9,7 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    
+
     <!-- Flatpickr CSS és JS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -717,7 +716,7 @@
                 flex-direction: column;
                 gap: 0.5rem;
             }
-            
+
             .nav-controls {
                 gap: 0.5rem;
             }
@@ -788,7 +787,7 @@
                             </button>
                         </div>
                     </div>
-                    
+
                     <a href="#contact" class="btn btn-primary">Book Now</a>
                     <button class="mobile-menu-btn">
                         <i class="fas fa-bars"></i>
@@ -847,9 +846,9 @@
 
             <div class="grid grid-3">
                 <div class="card">
-                    <img src="d1_main.png" alt="D1 Guesthouse" class="card-image">
+                    <img src="szepvolgyi.png" alt="Szépvölgyi Guesthouse" class="card-image">
                     <div class="card-content">
-                        <h3>D1 Guesthouse</h3>
+                        <h3>Szépvölgyi Guesthouse</h3>
                         <p>Spacious, modern house for families or groups, with panoramic terrace and fully equipped kitchen.</p>
                         <div class="badges">
                             <span class="badge badge-primary">For families</span>
@@ -857,7 +856,7 @@
                             <span class="badge badge-green">Equipped kitchen</span>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-primary" onclick="selectRoom('D1 Guesthouse')">Choose</button>
+                            <button class="btn btn-primary" onclick="selectRoom('Szépvölgyi Guesthouse')">Choose</button>
                         </div>
                     </div>
                 </div>
@@ -1159,7 +1158,7 @@
         function switchLanguage(lang) {
             const currentLang = document.getElementById('current-lang');
             const dropdown = document.getElementById('language-dropdown');
-            
+
             switch(lang) {
                 case 'hu':
                     currentLang.textContent = 'HU';
@@ -1186,7 +1185,7 @@
         document.addEventListener('click', function(event) {
             const dropdown = document.getElementById('language-dropdown');
             const button = document.querySelector('.language-btn');
-            
+
             if (!button.contains(event.target) && !dropdown.contains(event.target)) {
                 dropdown.classList.remove('show');
             }
