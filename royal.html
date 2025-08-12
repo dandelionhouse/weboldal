@@ -1,0 +1,509 @@
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Homes Lakás - Dandelion Vendégház</title>
+    <meta name="description" content="Royal Homes Lakás - luxus lakás a város szívében modern berendezéssel.">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #f59e0b;
+            --primary-dark: #d97706;
+            --secondary: #3b82f6;
+            --secondary-dark: #2563eb;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --white: #ffffff;
+            --green-600: #16a34a;
+            --green-100: #dcfce7;
+            --royal-gold: #d4af37;
+            --royal-purple: #663399;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--gray-900);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--gray-700);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(102, 51, 153, 0.8) 0%, rgba(212, 175, 55, 0.6) 100%),
+                        url('dezsahatter.png') center/cover;
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            margin-top: 4rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            padding: 3rem 0;
+            align-items: start;
+        }
+
+        /* Gallery */
+        .gallery-section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--gray-900);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        /* Properties */
+        .properties-section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--gray-900);
+        }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .property-item {
+            background: linear-gradient(135deg, var(--royal-gold), var(--royal-purple));
+            padding: 1.5rem;
+            border-radius: 1rem;
+            text-align: center;
+            color: var(--white);
+            transition: all 0.3s;
+        }
+
+        .property-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .property-icon {
+            width: 3rem;
+            height: 3rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.25rem;
+        }
+
+        .property-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .property-item p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Amenities */
+        .amenities-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .amenity-category {
+            background: var(--white);
+            border: 2px solid var(--royal-gold);
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+
+        .amenity-category h4 {
+            color: var(--royal-purple);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .amenity-category h4 i {
+            margin-right: 0.5rem;
+            color: var(--royal-gold);
+        }
+
+        .amenity-category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .amenity-category li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            color: var(--gray-700);
+            font-size: 0.9rem;
+        }
+
+        .amenity-category li i {
+            color: var(--royal-gold);
+            margin-right: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        /* Description */
+        .description {
+            grid-column: 1 / -1;
+            margin: 3rem 0;
+        }
+
+        .description h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--royal-purple);
+        }
+
+        .description-content {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(102, 51, 153, 0.1));
+            padding: 2rem;
+            border-radius: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--gray-700);
+            border: 2px solid var(--royal-gold);
+        }
+
+        /* Booking Button */
+        .booking-section {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .booking-btn {
+            background: linear-gradient(135deg, var(--royal-gold) 0%, var(--royal-purple) 100%);
+            color: var(--white);
+            padding: 1.5rem 3rem;
+            border: none;
+            border-radius: 1rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .booking-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .property-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-seedling"></i>
+                    Dandelion Vendégház
+                </a>
+
+                <ul class="nav-menu">
+                    <li><a href="index.html">Főoldal</a></li>
+                    <li><a href="index.html#rooms">Szobák</a></li>
+                    <li><a href="index.html#services">Szolgáltatások</a></li>
+                    <li><a href="index.html#contact">Kapcsolat</a></li>
+                </ul>
+
+                <div class="nav-controls">
+                    <a href="index.html#contact" class="btn btn-primary">Foglalás</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1><span style="color: var(--royal-gold)">Royal Homes</span> Lakás</h1>
+            <p>Luxus lakás a város szívében prémium szolgáltatásokkal</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="main-content">
+            <!-- Gallery -->
+            <div class="gallery-section">
+                <h2>Galéria</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="dezsahatter.png" alt="Royal Homes külső">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="d2_main.png" alt="Royal Homes nappali">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fuge_main.png" alt="Royal Homes hálószoba">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Properties -->
+            <div class="properties-section">
+                <h2>Tulajdonságok</h2>
+                <div class="property-grid">
+                    <div class="property-item">
+                        <div class="property-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Férőhely</h3>
+                        <p>4 fő számára</p>
+                    </div>
+
+                    <div class="property-item">
+                        <div class="property-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h3>Parkolás</h3>
+                        <p>Mélygarázs</p>
+                    </div>
+
+                    <div class="property-item">
+                        <div class="property-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3>Kategória</h3>
+                        <p>5 csillagos luxus</p>
+                    </div>
+
+                    <div class="property-item">
+                        <div class="property-icon">
+                            <i class="fas fa-city"></i>
+                        </div>
+                        <h3>Elhelyezkedés</h3>
+                        <p>Város központ</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-bottom: 1rem;">Prémium Szolgáltatások</h3>
+                <div class="amenities-list">
+                    <div class="amenity-category">
+                        <h4><i class="fas fa-gem"></i> Luxus Felszereltség</h4>
+                        <ul>
+                            <li><i class="fas fa-crown"></i> Designer bútorok</li>
+                            <li><i class="fas fa-crown"></i> Prémium ágyneműk</li>
+                            <li><i class="fas fa-crown"></i> Smart home rendszer</li>
+                            <li><i class="fas fa-crown"></i> Nespresso kávégép</li>
+                        </ul>
+                    </div>
+
+                    <div class="amenity-category">
+                        <h4><i class="fas fa-concierge-bell"></i> Concierge Szolgáltatások</h4>
+                        <ul>
+                            <li><i class="fas fa-crown"></i> 24/7 recepció</li>
+                            <li><i class="fas fa-crown"></i> Transzfer szolgáltatás</li>
+                            <li><i class="fas fa-crown"></i> Éttermi foglalás</li>
+                            <li><i class="fas fa-crown"></i> Programszervezés</li>
+                        </ul>
+                    </div>
+
+                    <div class="amenity-category">
+                        <h4><i class="fas fa-spa"></i> Wellness & Fitness</h4>
+                        <ul>
+                            <li><i class="fas fa-crown"></i> Fitness terem</li>
+                            <li><i class="fas fa-crown"></i> Spa hozzáférés</li>
+                            <li><i class="fas fa-crown"></i> Masszázs szolgáltatás</li>
+                            <li><i class="fas fa-crown"></i> Medence használat</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div class="description">
+                <h2>Leírás</h2>
+                <div class="description-content">
+                    A Royal Homes Lakás a luxus és az elegancia megtestesülése a város szívében. 
+                    Ez a prémium kategóriás lakás minden igényt kielégít azok számára, akik a 
+                    legmagasabb színvonalú szállást keresik. A modern design és a klasszikus 
+                    elegancia tökéletes ötvözete várja vendégeinket. A teljes szolgáltatású 
+                    concierge által biztosított személyre szabott kiszolgálás garantálja, 
+                    hogy minden pillanat emlékezetes legyen. A lakás közvetlen közelében 
+                    található a város legjobb éttermei, bevásárlóközpontjai és kulturális 
+                    látványosságai. Ideális választás üzleti utazóknak és azoknak, 
+                    akik a városi életet luxuskörülmények között szeretnék megismerni.
+                </div>
+            </div>
+
+            <!-- Booking -->
+            <div class="booking-section">
+                <button class="booking-btn" onclick="openBookingWidget()">
+                    <i class="fas fa-crown"></i>
+                    Foglalás és Árak
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openBookingWidget() {
+            // Royal Homes booking widget integration
+            const script = document.createElement('script');
+            script.src = 'https://ibe.sabeeapp.com/bewidget.php?id=51d4f3e08b81a822e958c9f25d82807d';
+            script.type = 'text/javascript';
+            script.id = 'widget_51d4f3e08b81a822e958c9f25d82807d';
+            document.head.appendChild(script);
+        }
+    </script>
+</body>
+</html>
